@@ -1,5 +1,5 @@
 # BYTE-90: A Retro PC and MAC Inspired Interactive Designer Art Toy
-**Open source coming soon**
+**Open source firmware coming soon**
 
 BYTE-90 is a retro PC and Mac inspired interactive designer art toy that displays animated emotes through various interactions. It detects motion, responds to taps and orientation changes, pairs and communicates with other BYTE-90 devices to exchange animated conversations.
 
@@ -246,20 +246,24 @@ lib_deps =
     adafruit/Adafruit GFX Library@^1.11.11         # Graphics
     adafruit/Adafruit SSD1351 library@^1.3.2       # Display driver
     adafruit/Adafruit ADXL345@^1.3.4               # Accelerometer
-    arduino-libraries/ArduinoHttpClient@^0.4.0     # OTA updates
 ```
 
 ### Build Configuration
 ```ini
 [env:seeed_xiao_esp32s3]
-platform = espressif32@^6.0.0
+platform = espressif32
 board = seeed_xiao_esp32s3
 framework = arduino
 monitor_speed = 115200
+build_flags = 
+	-DCORE_DEBUG_LEVEL=5
 board_build.filesystem = littlefs
 board_build.partitions = custom_partitions.csv
-board_build.flash_mode = qio
-board_build.f_cpu = 240000000L
+lib_deps = 
+	bitbank2/AnimatedGIF@2.1.1
+	adafruit/Adafruit GFX Library@^1.11.11
+	adafruit/Adafruit SSD1351 library@^1.3.2
+	adafruit/Adafruit ADXL345@^1.3.4
 ```
 
 ### Animation Assets
