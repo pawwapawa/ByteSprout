@@ -39,7 +39,7 @@ This document outlines the legal terms, licensing information, and community gui
 
 - **Personal Use**: Modifications for personal use are encouraged
 - **Community Sharing**: Share non-commercial modifications with appropriate attribution
-- **Commercial Use**: Commercial redistribution of modified firmware **must NOT use BYTE-90 branding or BYTE-90 proprietary assets including 3D print design and Animations**
+- **Commercial Use**: Commercial redistribution of modified firmware **must not use BYTE-90 branding or any BYTE-90 proprietary assets including original designs, 3D printed models, and animations**
 - **Naming**: Use descriptive names that don't include "BYTE-90" name (e.g., "Custom Retro Firmware", "Enhanced Animation Controller")
 
 ## Attribution Requirements for Derivative Works
@@ -63,8 +63,8 @@ This document outlines the legal terms, licensing information, and community gui
 
 ### Prohibited Uses:
 
-- Creating competing commercial products using **BYTE-90 branding and or using any BYTE-90 proprietary assets including 3D print design and Animations**
-- Selling devices or services that incorporate **BYTE-90 name or visual identity and any BYTE-90 proprietary assets including 3D print design and Animations**
+- Creating competing commercial products using **BYTE-90 branding or any BYTE-90 proprietary assets including original designs, 3D printed models, and animations**
+- Selling devices or services that incorporate **BYTE-90 branding or any BYTE-90 proprietary assets including original designs, 3D printed models, and animations**
 - Distributing proprietary animations, designs, or 3D models
 - Implying official endorsement or affiliation with ALXV Labs
 
@@ -84,21 +84,21 @@ This document outlines the legal terms, licensing information, and community gui
 - **Steps to reproduce**: Detailed sequence of actions leading to issue
 - **Expected behavior**: What should have happened
 - **Actual behavior**: What actually happened
-- **Environment**: Temperature, humidity, usage conditions
+- **Modifications**: List all modifications if any
 
 ### Issue Types
 
 **Bug Reports**: Use GitHub Issues with the "bug" label
 **Feature Requests**: Use GitHub Issues with the "enhancement" label
 **Questions**: Use GitHub Discussions for general questions
-**Security Issues**: Email directly to support contact (not public issues)
+**Security Issues**: Email directly
 
-### Response Expectations
+### Support Approach
 
-- **Bug reports**: 1-2 weeks for initial response
-- **Feature requests**: Evaluated for future releases
-- **Pull requests**: 2-4 weeks for review
-- **General questions**: Community support preferred
+- **Bug reports**: Reviewed as time permits
+- **Feature requests**: Considered for future development
+- **Pull requests**: Reviewed when possible
+- **General questions**: Community support encouraged
 
 ## BYTE-90 Intellectual Property Rights
 
@@ -143,18 +143,17 @@ This document outlines the legal terms, licensing information, and community gui
 
 ### Branding Restrictions for Commercial Products
 - **Cannot Use**: BYTE-90 name, logo, or visual identity
-- **Cannot Include**: Proprietary animations or 3D models
+- **Cannot Include**: Proprietary animations, original designs, or 3D models
 - **Must Include**: Clear disclaimer of non-affiliation with ALXV Labs
 - **Recommended**: Use completely different branding and product names
 
 ### Licensing Options
-For commercial products that need to use BYTE-90 branding or proprietary assets, contact ALXV Labs for separate licensing agreements.
+For commercial products that need to use BYTE-90 branding or any proprietary assets (including original designs, animations, and 3D models), contact ALXV Labs for separate licensing agreements.
 
 ## Contact Information
 
 **Technical Support**: [GitHub Issues](https://github.com/alxv2016/Byte90-alxvlabs/issues)
-**Legal Questions**: Contact via [ALXV Labs Support](https://labs.alxvtoronto.com/pages/support)
-**Commercial Licensing**: Contact ALXV Labs directly for custom licensing arrangements
+**Licensing & General Inquiries**: Contact via [ALXV Labs Support](https://labs.alxvtoronto.com)
 
 ## Updates to These Guidelines
 
