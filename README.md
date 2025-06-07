@@ -10,6 +10,8 @@ While the base software is open-source, **the animations and 3D printed files re
 
 [BYTE-90 by ALXV Labs](https://labs.alxvtoronto.com/)
 
+> **Important**: Before contributing or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
+
 ## Features
 
 - **Interactive Animations**: Displays various animated GIFs through interactions and sequence events
@@ -302,61 +304,6 @@ Configure different retro computing aesthetics to call mode based animations:
 - **MAC_MODE** - Retro Macintosh-inspired Happy Mac expressions  
 - **PC_MODE** - Retro PC Happy Mac expressions
 
-## Community Contributions & Modifications
-
-### What We Welcome
-
-- Code contributions via GitHub pull requests
-- Bug reports and feature suggestions
-- Educational content and tutorials
-- Personal use modifications and customizations
-
-### Contribution Guidelines
-
-- Code Quality: Follow existing code style and commenting standards
-- Testing: Test thoroughly on actual hardware before submitting
-- Documentation: Update relevant documentation for any changes
-- License Agreement: Contributors must agree to GPL v3.0 terms
-
-## Fork and Modification Guidelines
-
-- Personal Use: Modifications for personal use are encouraged
-- Community Sharing: Share non-commercial modifications with appropriate attribution
-- Commercial Use: Commercial redistribution of modified firmware **must NOT use BYTE-90 branding or BYTE-90 proprietary assets including 3D print design and Animations**
-- Naming: Use descriptive names that don't include "BYTE-90" name(e.g., "Custom Retro Firmware", "Enhanced Animation Controller")
-
-## Attribution Requirements for Derivative Works
-
-### When creating derivative works or forks:
-
-- Credit original work: "Based on BYTE-90 firmware by ALXV Labs"
-- Link to original repository: [https://github.com/alxv2016/Byte90-alxvlabs](https://github.com/alxv2016/Byte90-alxvlabs)
-- Cannot imply endorsement by ALXV Labs
-- Must use different product naming for commercial derivatives
-- Include disclaimer: "Not affiliated with or endorsed by ALXV Labs"
-
-## Brand Guidelines for Community Projects
-
-### Permitted Uses:
-
-- Educational content, tutorials, and modifications for personal use
-- Community projects that enhance or extend functionality
-- Academic research and non-commercial development
-- Open source contributions to the core firmware
-
-### Prohibited Uses:
-
-- Creating competing commercial products using **BYTE-90 branding and or using any BYTE-90 proprietary assets including 3D print design and Animations**
-- Selling devices or services that incorporate **BYTE-90 name or visual identity and any BYTE-90 proprietary assets including 3D print design and Animations**
-- Distributing proprietary animations, designs, or 3D models
-- Implying official endorsement or affiliation with ALXV Labs
-
-**Recommended Naming for Community Projects**
-
-- "Custom BYTE Firmware" or "Enhanced Animation Controller"
-- "Retro Display Toy" or "Interactive Animation Device"
-- Always include appropriate disclaimers about independence from ALXV Labs
-
 ## Troubleshooting
 
 ### Common Issues
@@ -384,17 +331,6 @@ Configure different retro computing aesthetics to call mode based animations:
 - **Lockouts**: Check if interactions suppressed by timing windows
 - **FIFO buffer**: Verify 16-sample stream mode operation
 
-## Issue Reporting Guidelines
-
-**When reporting bugs, please include:**
-
-- Hardware version: XIAO ESP32S3 revision, display module version
-- Firmware version: Current firmware version number
-- Battery status: Charged, charging, or low battery
-- Steps to reproduce: Detailed sequence of actions leading to issue
-- Expected behavior: What should have happened
-- Actual behavior: What actually happened
-
 ## Frequently Asked Questions
 
 **Q: How long does the battery last?**
@@ -416,7 +352,7 @@ A: Intelligent lockout periods prevent false triggers:
 A: Requires programming knowledge. Animations remain proprietary, but motion thresholds can be adjusted in firmware.
 
 **Q: Can I create commercial products using this firmware?**
-A: Yes, under GPL v3.0 terms, but you cannot use BYTE-90 branding or proprietary assets include 3D printing designs and Animations.
+A: Yes, under GPL v3.0 terms, but you cannot use BYTE-90 branding or proprietary assets include 3D printing designs and Animations. See [Legal Guidelines](CONTRIBUTING.md) for details.
 
 **Q: What's the difference between the open source firmware and commercial version?**
 A: Open source includes core functionality; commercial version includes full hardware and proprietary animations with device support and exclusive access to new feature releases.
@@ -441,51 +377,20 @@ A: Open source includes core functionality; commercial version includes full har
 - [Support Page](https://labs.alxvtoronto.com/pages/support) - User guides and FAQ
 - [GitHub Repository](https://github.com/alxv2016/Byte90-alxvlabs) - Open source firmware
 - [ALXV Labs](https://labs.alxvtoronto.com/) - Product information
+- [Legal & Contributing Guidelines](CONTRIBUTING.md) - Licensing and contribution rules
 
 **Support Level**: Limited technical implementation support. Users expected to have Arduino/ESP32 development experience.
 
-## Legal & Licensing
+## Contributing
 
-### Software License
-**GNU General Public License v3.0** - Source code freely available for modification and redistribution with proper attribution. Full license text available in repository.
+We welcome contributions from the community! Before contributing, please:
 
-**Firmware Warranty Disclaimer**: The BYTE-90 open source firmware is provided "as is" without any warranty of any kind, either express or implied. No warranties are made regarding the firmware's functionality, reliability, compatibility, or fitness for any particular purpose. Users assume all risks associated with the use, modification, or distribution of the firmware.
+1. Read our [Legal & Contributing Guidelines](CONTRIBUTING.md)
+2. Review the contribution guidelines for code quality standards
+3. Test thoroughly on actual hardware before submitting
+4. Follow our attribution requirements for derivative works
 
-**Limitation of Liability**: In no event shall ALXV Labs be liable for any damages arising from the use of this firmware, including but not limited to hardware damage, data loss, personal injury, or any direct, indirect, incidental, special, or consequential damages.
-
-### BYTE-90 Intellectual Property Rights
-
-**Brand Protection Notice**: BYTE-90 is a brand name of ALXV Labs. Use of the BYTE-90 name or branding in derivative projects requires explicit written permission.
-
-**Protected Assets (© 2025 Alex Tieu Long Vong, ALXV Labs):**
-- BYTE-90 logo and brand identity
-- All animations and character designs
-- Visual identity and design elements
-- 3D printed models and digital files
-- Product packaging and marketing materials
-
-**Prohibited Actions:**
-1. Distribution of BYTE-90 animations, designs, or 3D models
-2. Modification and distribution of proprietary assets
-3. Creating competing commercial products using **BYTE-90 branding**
-4. Commercial exploitation without authorization using BYTE-90 branding
-5. Sharing proprietary assets through other platforms or media
-6. Creation of derivative works based on proprietary assets
-
-**Permitted Fair Use:**
-
-- Educational discussion and analysis
-- Non-commercial review and commentary
-- Technical documentation referencing functionality
-- Academic research and study
-
-**Commercial Use Guidelines**
-
-- Open source firmware may be used commercially under GPL v3.0 terms
-- Must provide source code to end users
-- Cannot use BYTE-90 branding or proprietary animations and 3D printing designs
-- Must clearly identify as independent, non-affiliated product
-- Consider alternative naming that doesn't reference BYTE-90
+For bug reports, feature requests, and detailed contribution guidelines, see [Legal & Contributing Guidelines](CONTRIBUTING.md).
 
 ### Acknowledgements
 - **Adafruit Industries**: Hardware libraries and sensor drivers
@@ -494,8 +399,34 @@ A: Open source includes core functionality; commercial version includes full har
 - **Seeedstudio**: XIAO ESP32S3 development board design
 - **Community Contributors**: Open source development and testing
 
+## BYTE-90 Intellectual Property Rights
+
+### Brand Protection Notice
+**BYTE-90 is a brand name of ALXV Labs.** Use of the BYTE-90 name or branding in derivative projects requires explicit written permission. For more information on BYTE-90 Legal & Community Guidelines: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Protected Assets (© 2025 Alex Tieu Long Vong, ALXV Labs):
+- BYTE-90 logo and brand identity
+- All animations and character designs
+- Visual identity and design elements
+- 3D printed models and digital files
+- Product packaging and marketing materials
+
+### Prohibited Actions:
+1. Distribution of BYTE-90 animations, designs, or 3D models
+2. Modification and distribution of proprietary assets
+3. Creating competing commercial products using **BYTE-90 branding**
+4. Commercial exploitation without authorization using BYTE-90 branding
+5. Sharing proprietary assets through other platforms or media
+6. Creation of derivative works based on proprietary assets
+
+### Permitted Fair Use:
+- Educational discussion and analysis
+- Non-commercial review and commentary
+- Technical documentation referencing functionality
+- Academic research and study
+
 ---
 
 *Designed and developed by Alex Vong, ALXV LABS. This project represents the intersection of retro computing nostalgia and modern interactive design, creating a unique interactive designer toy experience for makers and collectors alike.*
 
-Version: 1.0.1 | Last Updated: June 7, 2025 | License: GPL v3.0
+**Version**: 1.0.1 | **Last Updated**: June 7, 2025 | **License**: GPL v3.0 | **Legal**: [CONTRIBUTING.md](CONTRIBUTING.md)
