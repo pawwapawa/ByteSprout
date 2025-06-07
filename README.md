@@ -88,8 +88,8 @@ Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 Always verify battery voltage is **3.7V** (not 3.9V) and **correct polarity alignment** before installation.
 
 ## Pin Configuration
-![WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg)
-![XIAO ESP32S3 Pinout](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/2.jpg)
+![WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg){width=50%}
+![XIAO ESP32S3 Pinout](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/2.jpg){width=50%}
 
 ```
 ESP32S3 XIAO Pin Assignments:
