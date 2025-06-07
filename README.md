@@ -1,7 +1,5 @@
 # BYTE-90: A Retro PC and MAC Inspired Interactive Designer Art Toy
 
----
-
 **Open source firmware coming soon**
 
 BYTE-90 is a retro PC and Mac inspired interactive designer art toy that displays animated emotes through various interactions. It detects motion, responds to taps and orientation changes, pairs and communicates with other BYTE-90 devices to exchange animated conversations.
@@ -22,9 +20,9 @@ While the base software is open-source, **the animations and 3D printed files re
 - **Over-the-Air Updates**: Wireless firmware and animation updates via dedicated web interface
 
 ### Current Firmware Version
-Version: 1.0.1
-Release Date: [TBD]
-Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
+- Version: 1.0.1
+- Release Date: [TBD]
+- Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 
 ## Hardware Components
 
@@ -80,16 +78,16 @@ Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 - Handle battery connector with care to avoid damage
 
 **Critical Safety Checks**:
-2. Check battery's connector polarity alignment if using another type of battery
-3. Ensure battery is charged and functional
-4. Handle connector carefully
+1. Check battery's connector polarity alignment if using another type of battery
+2. Ensure battery is charged and functional
+3. Handle connector carefully
 
 **Critical Safety Note**: 
 Always verify battery voltage is **3.7V** (not 3.9V) and **correct polarity alignment** before installation.
 
 ## Pin Configuration
-[WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg)
-[XIAO ESP32S3 Pinout](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/2.jpg)
+- [WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg)
+- [XIAO ESP32S3 Pinout](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/2.jpg)
 
 ```
 ESP32S3 XIAO Pin Assignments:
@@ -148,7 +146,7 @@ ESP32S3 XIAO Pin Assignments:
 
 ### Power Management System
 
-The BYTE-90 implements progressive power management with four distinct states:
+BYTE-90 implements progressive power management with four distinct states:
 
 **Active State** - Full Operation
 - Current draw: ~80-120mA
@@ -210,7 +208,7 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 
 ### BYTE-90 Device Pairing (Communication Mode) 
 
-**ESP-NOW Protocol for BYTE-90 Device Pairing:**
+**Uses ESP-NOW Protocol for BYTE-90 Device Pairing:**
 - **Activation**: Toggles via Settings Menu
 - **Visual indicator**: Connection icon in top-right corner
 - **Range**: Up to 200 meters in open space
@@ -298,11 +296,11 @@ lib_deps =
 ## Device Modes
 
 ### Personality Modes
-Configure different retro computing aesthetics to call theme based animations:
+Configure different retro computing aesthetics to call mode based animations:
 
-**BYTE_MODE (Default)** - Original BYTE-90 character designs
-**MAC_MODE** - Classic Macintosh-inspired interface and expressions  
-**PC_MODE** - DOS/Windows 95 era aesthetics and animations
+- **BYTE_MODE (Default)** - Original BYTE-90 character designs
+- **MAC_MODE** - Retro Macintosh-inspired Happy Mac expressions  
+- **PC_MODE** - Retro PC Happy Mac expressions
 
 ## Community Contributions & Modifications
 
@@ -324,8 +322,8 @@ Configure different retro computing aesthetics to call theme based animations:
 
 - Personal Use: Modifications for personal use are encouraged
 - Community Sharing: Share non-commercial modifications with appropriate attribution
-- Commercial Use: Commercial redistribution of modified firmware **must NOT use BTYE-90 branding or BYTE-90 proprietary assets including 3D print design and Animations**
-- Naming: Use descriptive names that don't include "BYTE-90" trademark (e.g., "Custom Retro Firmware", "Enhanced Animation Controller")
+- Commercial Use: Commercial redistribution of modified firmware **must NOT use BYTE-90 branding or BYTE-90 proprietary assets including 3D print design and Animations**
+- Naming: Use descriptive names that don't include "BYTE-90" name(e.g., "Custom Retro Firmware", "Enhanced Animation Controller")
 
 ## Attribution Requirements for Derivative Works
 
@@ -348,8 +346,8 @@ Configure different retro computing aesthetics to call theme based animations:
 
 ### Prohibited Uses:
 
-- Creating competing commercial products using **BTYE-90 branding and or using any BYTE-90 proprietary assets including 3D print design and Animations**
-- Selling devices or services that incorporate **BTYE-90 name or visual identity and any BYTE-90 proprietary assets including 3D print design and Animations**
+- Creating competing commercial products using **BYTE-90 branding and or using any BYTE-90 proprietary assets including 3D print design and Animations**
+- Selling devices or services that incorporate **BYTE-90 name or visual identity and any BYTE-90 proprietary assets including 3D print design and Animations**
 - Distributing proprietary animations, designs, or 3D models
 - Implying official endorsement or affiliation with ALXV Labs
 
@@ -418,10 +416,10 @@ A: Intelligent lockout periods prevent false triggers:
 A: Requires programming knowledge. Animations remain proprietary, but motion thresholds can be adjusted in firmware.
 
 **Q: Can I create commercial products using this firmware?**
-A: Yes, under GPL v3.0 terms, but you cannot use BTYE-90 branding or proprietary assets include 3D printing designs and Animations.
+A: Yes, under GPL v3.0 terms, but you cannot use BYTE-90 branding or proprietary assets include 3D printing designs and Animations.
 
 **Q: What's the difference between the open source firmware and commercial version?**
-A: Open source includes core functionality; commercial version includes full hardware and proprietary animations with device support and exclusive access to feature releases.
+A: Open source includes core functionality; commercial version includes full hardware and proprietary animations with device support and exclusive access to new feature releases.
 
 ## Support & Community
 
@@ -455,13 +453,12 @@ A: Open source includes core functionality; commercial version includes full har
 
 **Limitation of Liability**: In no event shall ALXV Labs be liable for any damages arising from the use of this firmware, including but not limited to hardware damage, data loss, personal injury, or any direct, indirect, incidental, special, or consequential damages.
 
-### BTYE-90 Intellectual Property Rights
+### BYTE-90 Intellectual Property Rights
 
-Trademark Notice: BTYE-90 is a trademark of ALXV Labs. Use of the BYTE-90 name or branding in derivative projects requires explicit written permission.
+**Brand Protection Notice**: BYTE-90 is a brand name of ALXV Labs. Use of the BYTE-90 name or branding in derivative projects requires explicit written permission.
 
-**Protected Assets (© 2025 (Alex)Tieu Long Vong, ALXV Labs):**
-- BTYE-90 logo and brand identity
-- BYTE-90 name and branding
+**Protected Assets (© 2025 Alex Tieu Long Vong, ALXV Labs):**
+- BYTE-90 logo and brand identity
 - All animations and character designs
 - Visual identity and design elements
 - 3D printed models and digital files
@@ -470,10 +467,10 @@ Trademark Notice: BTYE-90 is a trademark of ALXV Labs. Use of the BYTE-90 name o
 **Prohibited Actions:**
 1. Distribution of BYTE-90 animations, designs, or 3D models
 2. Modification and distribution of proprietary assets
-3. Commercial exploitation without authorization using BTYE-90 branding
-4. Sharing proprietary assets through other platforms or media
-5. Creation of derivative works based on proprietary assets
-6. Using BTYE-90 trademark in product names or marketing
+3. Creating competing commercial products using **BYTE-90 branding**
+4. Commercial exploitation without authorization using BYTE-90 branding
+5. Sharing proprietary assets through other platforms or media
+6. Creation of derivative works based on proprietary assets
 
 **Permitted Fair Use:**
 
@@ -486,9 +483,9 @@ Trademark Notice: BTYE-90 is a trademark of ALXV Labs. Use of the BYTE-90 name o
 
 - Open source firmware may be used commercially under GPL v3.0 terms
 - Must provide source code to end users
-- Cannot use BTYE-90 branding or proprietary animations and 3D printing designs
+- Cannot use BYTE-90 branding or proprietary animations and 3D printing designs
 - Must clearly identify as independent, non-affiliated product
-- Consider alternative naming that doesn't reference BTYE-90
+- Consider alternative naming that doesn't reference BYTE-90
 
 ### Acknowledgements
 - **Adafruit Industries**: Hardware libraries and sensor drivers
@@ -501,4 +498,4 @@ Trademark Notice: BTYE-90 is a trademark of ALXV Labs. Use of the BYTE-90 name o
 
 *Designed and developed by Alex Vong, ALXV LABS. This project represents the intersection of retro computing nostalgia and modern interactive design, creating a unique interactive designer toy experience for makers and collectors alike.*
 
-Version: 1.0.1 | Last Updated: [Date] | License: GPL v3.0
+Version: 1.0.1 | Last Updated: June 7, 2025 | License: GPL v3.0
