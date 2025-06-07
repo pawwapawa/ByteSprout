@@ -10,7 +10,7 @@ While the base software is open-source, **the animations and 3D printed files re
 
 [BYTE-90 by ALXV Labs](https://labs.alxvtoronto.com/)
 
-> **Important**: Before contributing or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
+> **Important**: Before contributing forking or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
 
 ## Features
 
