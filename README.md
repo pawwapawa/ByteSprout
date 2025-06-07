@@ -1,4 +1,7 @@
 # BYTE-90: A Retro PC and MAC Inspired Interactive Designer Art Toy
+
+---
+
 **Open source firmware coming soon**
 
 BYTE-90 is a retro PC and Mac inspired interactive designer art toy that displays animated emotes through various interactions. It detects motion, responds to taps and orientation changes, pairs and communicates with other BYTE-90 devices to exchange animated conversations.
@@ -17,6 +20,11 @@ While the base software is open-source, **the animations and 3D printed files re
 - **Device-to-Device Communication**: Seamless pairing with other BYTE-90 devices via ESP-NOW protocol for animated conversations
 - **Intelligent Power Management**: Progressive sleep modes with automatic inactivity detection to maximize battery life
 - **Over-the-Air Updates**: Wireless firmware and animation updates via dedicated web interface
+
+### Current Firmware Version
+Version: 1.0.1
+Release Date: [TBD]
+Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 
 ## Hardware Components
 
@@ -64,9 +72,24 @@ While the base software is open-source, **the animations and 3D printed files re
 - Battery life: Up to 2 days with intelligent power management
 - Can operate via USB-C power without battery
 
-### Pin Configuration
+## Battery Safety:
 
-**Critical Safety Note**: Always verify battery voltage is 3.7V (not 3.9V) and correct polarity alignment before installation.
+- Use ONLY the specified 3.7V lithium battery (103040 size) with PH 2.0 connector
+- Verify 3.7V voltage (NOT 3.9V) before installation
+- Check connector polarity alignment carefully
+- Handle battery connector with care to avoid damage
+
+**Critical Safety Checks**:
+2. Check battery's connector polarity alignment if using another type of battery
+3. Ensure battery is charged and functional
+4. Handle connector carefully
+
+**Critical Safety Note**: 
+Always verify battery voltage is **3.7V** (not 3.9V) and **correct polarity alignment** before installation.
+
+## Pin Configuration
+![WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg)
+![XIAO ESP32S3 Pinout](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/2.jpg)
 
 ```
 ESP32S3 XIAO Pin Assignments:
@@ -82,10 +105,10 @@ ESP32S3 XIAO Pin Assignments:
 │   ├── VCC -> 3.3V
 │   ├── GND -> GND
 │   ├── SDA -> D4 (GPIO5) - I2C Data
-│   ├── SCL -> D5 (GPIO4) - I2C Clock
-│   └── INT -> D1 (GPIO1) - Interrupt for Deep Sleep Wake
+│   ├── SCL -> D5 (GPIO6) - I2C Clock
+│   └── INT -> D1 (GPIO2) - Interrupt for Deep Sleep Wake
 ├── Button Interface
-│   ├── Input -> A3 (GPIO3) - with internal pull-up
+│   ├── Input -> A3 (GPIO4) - with internal pull-up
 │   └── Ground -> GND
 └── Power (Optional LiPo Battery)
     ├── Positive -> BAT+ (Red wire)
@@ -96,14 +119,14 @@ ESP32S3 XIAO Pin Assignments:
 | XIAO Pin | GPIO | Function | Component |
 |----------|------|----------|-----------|
 | D0 | GPIO1 | RST | Display Reset |
-| D1 | GPIO1 | INT | ADXL345 Interrupt |
+| D1 | GPIO2 | INT | ADXL345 INT1 Interrupt |
 | D4 | GPIO5 | SDA | ADXL345 I2C Data |
-| D5 | GPIO4 | SCL | ADXL345 I2C Clock |
+| D5 | GPIO6 | SCL | ADXL345 I2C Clock |
 | D6 | GPIO43 | DC | Display Data/Command |
 | D7 | GPIO44 | CS | Display Chip Select |
 | D8 | GPIO7 | SCK | Display SPI Clock |
 | D10 | GPIO9 | MOSI | Display SPI Data |
-| A3 | GPIO3 | INPUT | Button (with pull-up) |
+| A3 | GPIO4 | INPUT | Button (with pull-up) |
 
 ## System Architecture
 
@@ -117,7 +140,7 @@ ESP32S3 XIAO Pin Assignments:
 - Real-time response to user interactions
 
 **Update Mode (Configuration & Maintenance)**
-- Activated via long button press (3+ seconds)
+- Activated via Settings Menu
 - Creates Wi-Fi access point: "BYTE90_Setup" (password: `00000000`)
 - Web-based configuration interface at `192.168.4.1`
 - Enables firmware updates, animation uploads, and system diagnostics
@@ -145,9 +168,9 @@ The BYTE-90 implements progressive power management with four distinct states:
 - Reduced sensor polling
 
 **Deep Sleep** - 1.5 Hours of Inactivity
-- 20-second countdown warning with device mode display
+- 20-second countdown preperation time
 - Current draw: <1mA
-- Only accelerometer interrupt active
+- **Only accelerometer interrupt active**
 - Wake on tap or significant motion
 - Essential for 2-day battery life
 
@@ -159,12 +182,10 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 
 **Tap Detection** (Hardware ADXL345 Interrupt)
 - **Single Tap**: 14.0G threshold, 30ms duration window
-- **Z-axis taps**: Cycle visual effects (scanlines, dithering, CRT modes)
 - **X/Y-axis taps**: Trigger acknowledgment animations
 - **Hardware debouncing**: Prevents false triggers
 
 **Double-Tap Detection** (Within 250ms Window)
-- **Z-axis double-tap**: Toggle CRT glitch effects on/off
 - **X/Y-axis double-tap**: Trigger surprised or shocked animations
 - **Latency window**: 100ms between tap detections
 
@@ -187,10 +208,10 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 - **Gravity compensation**: Removes static 9.8 m/s² component
 - **Triggers**: Startle animations, surprise reactions
 
-### Device Communication
+### BYTE-90 Device Pairing (Communication Mode) 
 
-**ESP-NOW Protocol for Device-to-Device Communication:**
-- **Activation**: Single button press toggles Communication Mode
+**ESP-NOW Protocol for BYTE-90 Device Pairing:**
+- **Activation**: Toggles via Settings Menu
 - **Visual indicator**: Connection icon in top-right corner
 - **Range**: Up to 200 meters in open space
 - **Latency**: <50ms for animation triggers
@@ -201,13 +222,12 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 ## User Interface & Controls
 
 ### Button Operations
-- **Single Click**: Toggle Communication Mode (ESP-NOW) on/off
+- **Single Click**: Toggles Settings Menu
+- **Double Click**: Enters or Selects menu setting
 - **Long Press (3+ seconds)**: Enter Update Mode for configuration
-- **Double Click**: Force enter deep sleep mode
 
 ### Motion Interactions
 - **Single Tap**: 
-  - Z-axis: Cycle visual effects (scanlines, dithering, CRT modes)
   - X/Y-axis: Acknowledgment animations
 - **Double Tap**: 
   - Z-axis: Toggle CRT glitch effects
@@ -226,6 +246,8 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 4. **Configure**: Set up Wi-Fi, upload firmware/animations
 5. **Exit**: Single button press returns to normal operation
 
+**Windows 11 compatibility**: Windows 11 has a compatibility issue with DHCP access points, it fails or takes a long time to assign IP preventing connection to the Web Interface. A workaround is to manually assign the IP address once connected or use an iOS or Android device.
+
 ### Over-the-Air Updates
 - **Firmware updates**: Upload `.bin` files via web interface
 - **Animation packages**: Upload animation `.bin` files
@@ -238,6 +260,7 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 - [PlatformIO](https://platformio.org/) (VS Code extension recommended)
 - Git version control
 - Python 3.7+ for build tools
+- USB-C cable for programming and debugging
 
 ### Required Libraries
 ```ini
@@ -266,20 +289,75 @@ lib_deps =
 	adafruit/Adafruit ADXL345@^1.3.4
 ```
 
-### Animation Assets
+### Animation Asset Requirements
 - **Resolution**: Exactly 128×128 pixels
 - **Frame rate**: 16 FPS recommended
 - **Color depth**: 8-bit indexed color (256 colors max)
-- **Format**: Optimized GIF with LZW compression
+- **Format**: Optimized GIF with LZW compression [Use EZgif.com](https://ezgif.com/)
 
 ## Device Modes
 
-### Personality Themes
-Configure different retro computing aesthetics:
+### Personality Modes
+Configure different retro computing aesthetics to call theme based animations:
 
 **BYTE_MODE (Default)** - Original BYTE-90 character designs
 **MAC_MODE** - Classic Macintosh-inspired interface and expressions  
 **PC_MODE** - DOS/Windows 95 era aesthetics and animations
+
+## Community Contributions & Modifications
+
+### What We Welcome
+
+- Code contributions via GitHub pull requests
+- Bug reports and feature suggestions
+- Educational content and tutorials
+- Personal use modifications and customizations
+
+### Contribution Guidelines
+
+- Code Quality: Follow existing code style and commenting standards
+- Testing: Test thoroughly on actual hardware before submitting
+- Documentation: Update relevant documentation for any changes
+- License Agreement: Contributors must agree to GPL v3.0 terms
+
+## Fork and Modification Guidelines
+
+- Personal Use: Modifications for personal use are encouraged
+- Community Sharing: Share non-commercial modifications with appropriate attribution
+- Commercial Use: Commercial redistribution of modified firmware **must NOT use BTYE-90 branding or BYTE-90 proprietary assets including 3D print design and Animations**
+- Naming: Use descriptive names that don't include "BYTE-90" trademark (e.g., "Custom Retro Firmware", "Enhanced Animation Controller")
+
+## Attribution Requirements for Derivative Works
+
+### When creating derivative works or forks:
+
+- Credit original work: "Based on BYTE-90 firmware by ALXV Labs"
+- Link to original repository: [https://github.com/alxv2016/Byte90-alxvlabs](https://github.com/alxv2016/Byte90-alxvlabs)
+- Cannot imply endorsement by ALXV Labs
+- Must use different product naming for commercial derivatives
+- Include disclaimer: "Not affiliated with or endorsed by ALXV Labs"
+
+## Brand Guidelines for Community Projects
+
+### Permitted Uses:
+
+- Educational content, tutorials, and modifications for personal use
+- Community projects that enhance or extend functionality
+- Academic research and non-commercial development
+- Open source contributions to the core firmware
+
+### Prohibited Uses:
+
+- Creating competing commercial products using **BTYE-90 branding and or using any BYTE-90 proprietary assets including 3D print design and Animations**
+- Selling devices or services that incorporate **BTYE-90 name or visual identity and any BYTE-90 proprietary assets including 3D print design and Animations**
+- Distributing proprietary animations, designs, or 3D models
+- Implying official endorsement or affiliation with ALXV Labs
+
+**Recommended Naming for Community Projects**
+
+- "Custom BYTE Firmware" or "Enhanced Animation Controller"
+- "Retro Display Toy" or "Interactive Animation Device"
+- Always include appropriate disclaimers about independence from ALXV Labs
 
 ## Troubleshooting
 
@@ -287,18 +365,20 @@ Configure different retro computing aesthetics:
 
 **Device Not Responding**
 - **Charge first**: New devices need 1-2 hours initial charging
-- **Reset**: Press "Reset" button on circuit board
+- **Reset**: Press "Reset" button on Xiao ESP32-S3 board
 - **USB power**: Try direct USB-C power without battery
 
-**Random Restarts**
+**Random Restarts or Freeze**
 - **Cause**: Critically low battery
 - **Solution**: Charge immediately for 1-2 hours
+- **Hardware Reset**: Press reset button on board
 
 **Update Mode Issues**
 - **Windows 11**: Known compatibility issue with ESP32 access points
 - **Workaround**: Use macOS/iOS devices or manual IP assignment
 - **Check**: Ensure "BYTE90_Setup" network is visible
 - **Password**: `00000000` (eight zeros)
+- **Alternative**: Use USB flashing method via PlatformIO (Development knowledge required)
 
 **Motion Detection Problems**
 - **Calibration**: Place on flat surface to check baseline readings
@@ -306,15 +386,16 @@ Configure different retro computing aesthetics:
 - **Lockouts**: Check if interactions suppressed by timing windows
 - **FIFO buffer**: Verify 16-sample stream mode operation
 
-### Battery Safety
-**Compatible Battery**: 1200mAh 3.7V lithium (103040 size) with PH 2.0 connector
+## Issue Reporting Guidelines
 
-**Critical Safety Checks**:
-1. Verify 3.7V voltage (NOT 3.9V)
-2. Check connector polarity alignment
-3. Ensure battery is charged and functional
-4. Handle connector carefully
-5. Inspect for soldering damage
+**When reporting bugs, please include:**
+
+- Hardware version: XIAO ESP32S3 revision, display module version
+- Firmware version: Current firmware version number
+- Battery status: Charged, charging, or low battery
+- Steps to reproduce: Detailed sequence of actions leading to issue
+- Expected behavior: What should have happened
+- Actual behavior: What actually happened
 
 ## Frequently Asked Questions
 
@@ -336,7 +417,27 @@ A: Intelligent lockout periods prevent false triggers:
 **Q: Can I modify the animations or sensitivity?**
 A: Requires programming knowledge. Animations remain proprietary, but motion thresholds can be adjusted in firmware.
 
+**Q: Can I create commercial products using this firmware?**
+A: Yes, under GPL v3.0 terms, but you cannot use BTYE-90 branding or proprietary assets include 3D printing designs and Animations.
+
+**Q: What's the difference between the open source firmware and commercial version?**
+A: Open source includes core functionality; commercial version includes full hardware and proprietary animations with device support and exclusive access to feature releases.
+
 ## Support & Community
+
+### What We Support
+
+- **Core firmware** functionality and documented bugs
+- Hardware compatibility issues with **OFFICIAL BYTE-90 hardware**
+- Basic troubleshooting for common issues
+
+### What We Don't Support
+
+- Custom animation development
+- Hardware modifications or alternative component integration
+- Third-party component compatibility
+- Commercial deployment assistance or licensing guidance
+- Extensive debugging of modified or forked firmware
 
 **Official Resources:**
 - [Support Page](https://labs.alxvtoronto.com/pages/support) - User guides and FAQ
@@ -348,29 +449,56 @@ A: Requires programming knowledge. Animations remain proprietary, but motion thr
 ## Legal & Licensing
 
 ### Software License
-**GNU General Public License v3.0** - Source code freely available for modification and redistribution with proper attribution.
+**GNU General Public License v3.0** - Source code freely available for modification and redistribution with proper attribution. Full license text available in repository.
 
-### BYTE-90 Intellectual Property Rights
+**Firmware Warranty Disclaimer**: The BYTE-90 open source firmware is provided "as is" without any warranty of any kind, either express or implied. No warranties are made regarding the firmware's functionality, reliability, compatibility, or fitness for any particular purpose. Users assume all risks associated with the use, modification, or distribution of the firmware.
 
-**Protected Assets (© 2025 Alex Vong, ALXV Labs):**
-- BYTE-90 logo and brand identity
+**Limitation of Liability**: In no event shall ALXV Labs be liable for any damages arising from the use of this firmware, including but not limited to hardware damage, data loss, personal injury, or any direct, indirect, incidental, special, or consequential damages.
+
+### BTYE-90 Intellectual Property Rights
+
+Trademark Notice: BTYE-90 is a trademark of ALXV Labs. Use of the BYTE-90 name or branding in derivative projects requires explicit written permission.
+
+**Protected Assets (© 2025 (Alex)Tieu Long Vong, ALXV Labs):**
+- BTYE-90 logo and brand identity
+- BYTE-90 name and branding
 - All animations and character designs
 - Visual identity and design elements
 - 3D printed models and digital files
+- Product packaging and marketing materials
 
 **Prohibited Actions:**
 1. Distribution of BYTE-90 animations, designs, or 3D models
-2. Modification of proprietary assets
-3. Commercial exploitation without authorization
-4. Sharing through other platforms or media
+2. Modification and distribution of proprietary assets
+3. Commercial exploitation without authorization using BTYE-90 branding
+4. Sharing proprietary assets through other platforms or media
 5. Creation of derivative works based on proprietary assets
+6. Using BTYE-90 trademark in product names or marketing
+
+**Permitted Fair Use:**
+
+- Educational discussion and analysis
+- Non-commercial review and commentary
+- Technical documentation referencing functionality
+- Academic research and study
+
+**Commercial Use Guidelines**
+
+- Open source firmware may be used commercially under GPL v3.0 terms
+- Must provide source code to end users
+- Cannot use BTYE-90 branding or proprietary animations and 3D printing designs
+- Must clearly identify as independent, non-affiliated product
+- Consider alternative naming that doesn't reference BTYE-90
 
 ### Acknowledgements
 - **Adafruit Industries**: Hardware libraries and sensor drivers
 - **Bitbank2**: AnimatedGIF library for efficient GIF rendering
 - **Espressif Systems**: ESP32 development framework and tools
 - **Seeedstudio**: XIAO ESP32S3 development board design
+- **Community Contributors**: Open source development and testing
 
 ---
 
 *Designed and developed by Alex Vong, ALXV LABS. This project represents the intersection of retro computing nostalgia and modern interactive design, creating a unique interactive designer toy experience for makers and collectors alike.*
+
+Version: 1.0.1 | Last Updated: [Date] | License: GPL v3.0
