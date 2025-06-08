@@ -6,11 +6,11 @@ BYTE-90 is a retro PC and Mac inspired interactive designer art toy that display
 
 Designed and 3D printed by ALXV LABS (Alex Vong) as a designer toy, BYTE-90 is available as either a dev-kit or a collectible designer toy. This product is a limited run, and your support enables continued future development.
 
-While the base software is open-source, **the animations and 3D printed files remain proprietary** to maintain brand consistency and authenticity. You can purchase BYTE-90 that includes all hardware, software, and animations, or build your own using the off-the-shelf hardware specified below.
+While the base software is open-source, **the animations, original designs, and 3D printed files remain proprietary** to maintain brand consistency and authenticity. You can purchase BYTE-90 that includes all hardware, software, and animations, or build your own using the off-the-shelf hardware specified below.
 
 [BYTE-90 by ALXV Labs](https://labs.alxvtoronto.com/)
 
-> **Important**: Before contributing, forking, and or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
+> **⚠️ Important**: Before contributing, forking, and or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
 
 ## Features
 
@@ -72,20 +72,31 @@ While the base software is open-source, **the animations and 3D printed files re
 - Battery life: Up to 2 days with intelligent power management
 - Can operate via USB-C power without battery
 
-## Battery Safety:
+## Battery Safety & Device Usage
+
+### Battery Safety:
 
 - Use ONLY the specified 3.7V lithium battery (103040 size) with PH 2.0 connector
 - Verify 3.7V voltage (NOT 3.9V) before installation
 - Check connector polarity alignment carefully
 - Handle battery connector with care to avoid damage
 
-**Critical Safety Checks**:
+### Environmental Safety
+
+**BYTE-90 is designed as a desktop device for indoor use only.**
+- ⚠️ Do NOT use in vehicles or automotive environments - Heat, temperature fluctuations, and vibrations in cars can cause device overheating, battery damage, or malfunction.
+- ⚠️ Avoid high-temperature environments - Operating temperature should remain below 35°C (95°F) to prevent overheating.
+- ⚠️ Keep away from direct sunlight - Prolonged sun exposure can cause overheating and display damage.
+
+### Critical Safety Checks:
+
 1. Check battery's connector polarity alignment if using another type of battery
 2. Ensure battery is charged and functional
 3. Handle connector carefully
+4. Use only in appropriate indoor environments
 
-**Critical Safety Note**: 
-Always verify battery voltage is **3.7V** (not 3.9V) and **correct polarity alignment** before installation.
+**Critical Safety Note**:
+Always verify battery voltage is 3.7V (not 3.9V) and **correct polarity alignment** BEFORE installation.
 
 ## Pin Configuration
 - [WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg)
@@ -158,6 +169,7 @@ BYTE-90 implements progressive power management with four distinct states:
 
 **Display Dimming** - 30 Minutes of Inactivity
 - Display brightness reduced to 25%
+- Estimated: ~90-110mA (25% display brightness)
 - All functionality remains active
 - Motion detection continues normally
 
@@ -168,8 +180,8 @@ BYTE-90 implements progressive power management with four distinct states:
 - Reduced sensor polling
 
 **Deep Sleep** - 1.5 Hours of Inactivity
-- 20-second countdown preperation time
-- Current draw: <1mA
+- 20-second countdown preparation time
+- Current draw: ~35-40μA
 - **Only accelerometer interrupt active**
 - Wake on tap or significant motion
 - Essential for 2-day battery life
@@ -199,7 +211,7 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 - **Full Tilt**: ±9.0 m/s² threshold for left/right orientation (±90°)
 - **Half Tilt**: ±4.2 m/s² threshold for 45-degree angle detection
 - **Upside Down**: Z-axis ≤ -8.0 m/s² (accounts for PCB mounting)
-- **Triggers**: Crash animations, tumbling effects, recovery sequences
+- **Triggers**: Crash animations, with recovery sequences
 
 **Sudden Acceleration Detection** (Dynamic Movement)
 - **Acceleration threshold**: 6.0 m/s² for rapid movement
@@ -224,13 +236,12 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 ### Button Operations
 - **Single Click**: Toggles Settings Menu
 - **Double Click**: Enters or Selects menu setting
-- **Long Press (3+ seconds)**: Enter Update Mode for configuration
+- **Long Press (3+ seconds)**: Enter deep sleep
 
 ### Motion Interactions
 - **Single Tap**: 
   - X/Y-axis: Acknowledgment animations
 - **Double Tap**: 
-  - Z-axis: Toggle CRT glitch effects
   - X/Y-axis: Shocked/surprised animations
 - **Shake**: Dizzy/confused animations
 - **Tilt**: Crash and recovery animations based on angle
@@ -240,19 +251,27 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 
 ### Web Interface Access
 
-1. **Enter Update Mode**: Hold button for 3+ seconds
+1. **Enter Update Mode**: Toggle via Settings Menu
 2. **Connect to Wi-Fi**: Join "BYTE90_Setup" network (password: `00000000`)
 3. **Access Interface**: Navigate to `http://192.168.4.1`
 4. **Configure**: Set up Wi-Fi, upload firmware/animations
-5. **Exit**: Single button press returns to normal operation
+5. **Exit**: Exit via Settings Menu
 
-**Windows 11 compatibility**: Windows 11 has a compatibility issue with DHCP access points, it fails or takes a long time to assign IP preventing connection to the Web Interface. A workaround is to manually assign the IP address once connected or use an iOS or Android device.
+**⚠️ Windows 11 compatibility**: Windows 11 has a compatibility issue with DHCP access points, it fails or takes a long time to assign IP preventing connection to the Web Interface. A workaround is to manually assign the IP address once connected or use an iOS or Android device.
 
 ### Over-the-Air Updates
 - **Firmware updates**: Upload `.bin` files via web interface
 - **Animation packages**: Upload animation `.bin` files
 - **Automatic validation**: File integrity and format verification
 - **Rollback protection**: Safe update process with error recovery
+
+## Animation Asset Protection Notice
+
+- **⚠️ Important for BYTE-90 Purchasers**: Animations are paid proprietary assets included only with purchased BYTE-90 devices. When performing firmware updates or flashing operations, be careful not to erase the animation partition from flash memory.
+
+- **⚠️ If animations are accidentally erased**: Contact ALXV Labs support with your purchase information including order number for assistance in restoring your animations.
+
+- **For DIY builders**: This open source firmware does not include animations. Animations are available only with purchased BYTE-90 devices.
 
 ## Development & Building
 
@@ -265,11 +284,13 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 ### Required Libraries
 ```ini
 lib_deps = 
-    bitbank2/AnimatedGIF@^2.1.1                    # GIF decoding
+    bitbank2/AnimatedGIF@2.1.1                    # GIF decoding
     adafruit/Adafruit GFX Library@^1.11.11         # Graphics
     adafruit/Adafruit SSD1351 library@^1.3.2       # Display driver
     adafruit/Adafruit ADXL345@^1.3.4               # Accelerometer
 ```
+**⚠️ Important note**: Latest version of AnimatedGIF V2.2.0 introduces breaking changes and creates GIF artifacts on display.
+I have not updated to this version and don't see a reason too until I explore the breaking changes.
 
 ### Build Configuration
 ```ini
@@ -318,6 +339,10 @@ Configure different retro computing aesthetics to call mode based animations:
 - **Solution**: Charge immediately for 1-2 hours
 - **Hardware Reset**: Press reset button on board
 
+**No display (Black Screen)**
+- **Cause** Empty battery for extended periods requires a hard reset via the Reset button on the Xiao ESP32-S3 board
+- **For DIYer** Make sure you have your wiring correct and using the supported display, other aftermarket displays will require custom PIN configurations.
+
 **Update Mode Issues**
 - **Windows 11**: Known compatibility issue with ESP32 access points
 - **Workaround**: Use macOS/iOS devices or manual IP assignment
@@ -334,28 +359,29 @@ Configure different retro computing aesthetics to call mode based animations:
 ## Frequently Asked Questions
 
 **Q: How long does the battery last?**
-A: Up to 2 days with intelligent power management and progressive sleep modes.
+Up to 2 days with intelligent power management and progressive sleep modes.
 
 **Q: Can I check battery percentage?**
-A: Currently not available due to hardware limitations. Feature planned for future releases.
+Currently not available due to hardware limitations. Feature planned for future releases.
 
 **Q: How do I turn off BYTE-90?**
-A: No power switch - device uses automatic sleep modes. For complete shutdown, disconnect battery.
+No power switch - device uses automatic sleep modes. For complete shutdown, disconnect battery. This is a hardware and space limitation.
 
 **Q: Why do interactions seem delayed?**
-A: Intelligent lockout periods prevent false triggers:
+Intelligent lockout periods prevent false triggers:
 - 500ms after tap events
 - 600ms after acceleration detection
 - Priority system: shake > tap > acceleration > orientation
 
 **Q: Can I modify the animations or sensitivity?**
-A: Requires programming knowledge. Animations remain proprietary, but motion thresholds can be adjusted in firmware.
+Requires programming knowledge. Animations remain proprietary, but motion thresholds can be adjusted in firmware.
 
 **Q: Can I create commercial products using this firmware?**
-A: Yes, under GPL v3.0 terms, but you cannot use BYTE-90 branding or proprietary assets include 3D printing designs and Animations. See [Legal Guidelines](CONTRIBUTING.md) for details.
+Yes, under GPL v3.0 terms, but you **cannot use BYTE-90 branding or any BYTE-90 proprietary assets including original designs, 3D printed models, and animations** See [Legal Guidelines](CONTRIBUTING.md) for details.
 
 **Q: What's the difference between the open source firmware and commercial version?**
-A: Open source includes core functionality; commercial version includes full hardware and proprietary animations with device support and exclusive access to new feature releases.
+- Open source includes core functionality
+- Commercial version includes full hardware and proprietary animations with device support and exclusive access to new feature releases.
 
 ## Support & Community
 
