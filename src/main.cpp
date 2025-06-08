@@ -8,6 +8,9 @@
  */
 #include "common.h"
 #include "display_module.h"
+#include "adxl_module.h"
+#include "flash_module.h"
+#include "gif_module.h"
 
 //==============================================================================
 // GLOBAL VARIABLES
