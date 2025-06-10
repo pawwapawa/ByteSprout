@@ -1,7 +1,5 @@
 # BYTE-90: A Retro PC and MAC Inspired Interactive Designer Art Toy
 
-**Open source firmware coming soon**
-
 BYTE-90 is a retro PC and Mac inspired interactive designer art toy that displays animated emotes through various interactions. It detects motion, responds to taps and orientation changes, pairs and communicates with other BYTE-90 devices to exchange animated conversations.
 
 Designed and 3D printed by ALXV LABS (Alex Vong) as a designer toy, BYTE-90 is available as either a dev-kit or a collectible designer toy. This product is a limited run, and your support enables continued future development.
