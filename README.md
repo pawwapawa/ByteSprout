@@ -174,8 +174,6 @@ BYTE-90 implements progressive power management with four distinct states:
 **Sleep Mode** - 1 Hour of Inactivity
 - Sleep animations displayed
 - Current draw: ~40-60mA
-- Further display dimming
-- Reduced sensor polling
 
 **Deep Sleep** - 1.5 Hours of Inactivity
 - 20-second countdown preparation time
@@ -222,12 +220,10 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 
 **Uses ESP-NOW Protocol for BYTE-90 Device Pairing:**
 - **Activation**: Toggles via Settings Menu
-- **Visual indicator**: Connection icon in top-right corner
 - **Range**: Up to 200 meters in open space
 - **Latency**: <50ms for animation triggers
-- **Auto-discovery**: Automatic pairing with nearby BYTE-90 devices
+- **Auto-discovery**: Automatic pairing with nearby a BYTE-90 device (max 2 connections)
 - **Conversations**: Paired devices engage in animated sequences
-- **Multi-device**: Support for multiple simultaneous connections
 
 ## User Interface & Controls
 
