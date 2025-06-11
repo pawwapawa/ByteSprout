@@ -343,12 +343,7 @@ Configure different retro computing aesthetics to call mode based animations:
 - **Check**: Ensure "BYTE90_Setup" network is visible
 - **Password**: `00000000` (eight zeros)
 - **Alternative**: Use USB flashing method via PlatformIO (Development knowledge required)
-
-**Motion Detection Problems**
-- **Calibration**: Place on flat surface to check baseline readings
-- **Thresholds**: May require firmware modification for sensitivity
-- **Lockouts**: Check if interactions suppressed by timing windows
-- **FIFO buffer**: Verify 16-sample stream mode operation
+- **Important**: Early BYTE-90 devices may have poor antenna signals due to the WiFi antenna placement. If you are not seeing "BYTE90_Setup" network, open the backcover and reposition the WiFi antenna over top the battery.
 
 ## Frequently Asked Questions
 
