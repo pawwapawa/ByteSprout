@@ -21,7 +21,7 @@ While the base software is open-source, **the animations, original designs, and 
 
 ### Current Firmware Version
 - Version: 1.0.1
-- Release Date: [TBD]
+- Release Date: June 10, 2025
 - Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 
 ## Hardware Components
