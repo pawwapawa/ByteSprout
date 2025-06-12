@@ -8,6 +8,8 @@ While the base software is open-source, **the animations, original designs, and 
 
 [BYTE-90 by ALXV Labs](https://labs.alxvtoronto.com/)
 
+> **⚠️ Important**: Before contributing, forking, and or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
+
 ## Official Firmware vs. Open Source Development
 
 **⚠️ Important Notice for BYTE-90 Owners**:
@@ -27,8 +29,6 @@ If you purchased a BYTE-90 device, use only official firmware updates available 
 - Potential device malfunction or boot issues
 
 Use the official OTA update process for purchased devices, or proceed with custom firmware only if you understand the risks and have development experience.
-
-> **⚠️ Important**: Before contributing, forking, and or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
 
 ## Features
 
