@@ -177,7 +177,7 @@ void stopWiFiManager() {
   preferences.clear();
   preferences.end();
 
-  WiFi.mode(WIFI_OFF);
+  WiFi.mode(WIFI_MODE_NULL);
   delay(100);
   ESP.restart();
 }
@@ -392,7 +392,7 @@ void setupWebEndpoints() {
 void startWiFiConfigPortal() {
   wifiState = WiFiState::CONFIG_MODE;
     // Check if AP is already running to avoid redundant AP setup
-  bool apEnabled = (WiFi.getMode() == WIFI_AP && WiFi.softAPIP() != IPAddress(0, 0, 0, 0));
+  bool apEnabled = (WiFi.getMode() == WIFI_MODE_AP && WiFi.softAPIP() != IPAddress(0, 0, 0, 0));
   
   if (!apEnabled) {
     WiFi.mode(WIFI_MODE_AP);
@@ -507,7 +507,7 @@ bool prepareForESPMode() {
   }
   
   // Set to STA mode for ESP-NOW compatibility
-  WiFi.mode(WIFI_STA);
+  WiFi.mode(WIFI_MODE_STA);
   WiFi.disconnect();
   
   // Update state
@@ -537,7 +537,7 @@ bool prepareForUpdateMode() {
  * @return true if in correct mode for ESP-NOW, false otherwise
  */
 bool isReadyForESPNow() {
-  return (WiFi.getMode() == WIFI_STA && WiFi.status() != WL_CONNECTED);
+  return (WiFi.getMode() == WIFI_MODE_STA && WiFi.status() != WL_CONNECTED);
 }
 
 /**
@@ -547,5 +547,5 @@ bool isReadyForESPNow() {
  */
 bool isInConfigMode() {
   return (wifiState == WiFiState::CONFIG_MODE && 
-          (WiFi.getMode() == WIFI_AP || WiFi.getMode() == WIFI_MODE_APSTA));
+          (WiFi.getMode() == WIFI_MODE_AP || WiFi.getMode() == WIFI_MODE_APSTA));
 }

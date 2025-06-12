@@ -192,8 +192,8 @@ static bool setupPeer(const uint8_t *mac) {
  */
 bool initializeESPNOW() {
   // Make sure we're in station mode for ESP-NOW
-  if (WiFi.getMode() != WIFI_STA) {
-    WiFi.mode(WIFI_STA);
+  if (WiFi.getMode() != WIFI_MODE_STA) {
+    WiFi.mode(WIFI_MODE_STA);
     WiFi.disconnect();
   }
 
