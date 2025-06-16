@@ -39,6 +39,24 @@
   * @return Current SystemMode value
   */
  SystemMode getCurrentMode();
+
+ /**
+  * @brief Initialize the system with all required modules
+  * 
+  * Sets up all system modules including serial communication for debugging
+  * and alternative firmware updates.
+  * 
+  * @return true if initialization successful, false otherwise
+  */
+ bool initSystem();
+
+ /**
+  * @brief Main system update function - call this in your main loop
+  * 
+  * Handles all system-level updates including serial communication,
+  * mode management, and other system services.
+  */
+ void updateSystem();
  
  /**
   * @brief Transition the system to a new operation mode
@@ -64,5 +82,15 @@
   * @param newMode The mode to update display for
   */
  void updateDisplayForMode(SystemMode newMode);
+
+ /**
+  * @brief Check if system can safely transition modes
+  * 
+  * Verifies that no critical operations (like serial updates) are in progress
+  * that would prevent safe mode transitions.
+  * 
+  * @return true if mode transition is safe, false otherwise
+  */
+ bool canTransitionModes();
  
  #endif /* SYSTEM_MODULE_H */

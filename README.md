@@ -18,10 +18,11 @@ While the base software is open-source, **the animations, original designs, and 
 - **Device-to-Device Communication**: Seamless pairing with other BYTE-90 devices via ESP-NOW protocol for animated conversations
 - **Intelligent Power Management**: Progressive sleep modes with automatic inactivity detection to maximize battery life
 - **Over-the-Air Updates**: Wireless firmware and animation updates via dedicated web interface
+- **Web Serial API Updater**: Connect your BYTE-90 and update firmware and animations using Web Serial API on supported browsers
 
 ### Current Firmware Version
-- Version: 1.0.1
-- Release Date: June 10, 2025
+- Version: 1.0.3
+- Release Date: June 16, 2025
 - Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 
 ## Hardware Components

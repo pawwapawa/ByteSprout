@@ -6,19 +6,21 @@
  * initialization of hardware and software components, and manages the main
  * application loop for different system modes.
  */
-#include "common.h"
+
 #include "adxl_module.h"
-#include "display_module.h"
-#include "flash_module.h"
+#include "animation_module.h"
 #include "menu_module.h"
-#include "espnow_module.h"
-#include "wifi_module.h"
-#include "system_module.h"
+#include "common.h"
+#include "display_module.h"
 #include "emotes_module.h"
-#include "motion_module.h"
+#include "espnow_module.h"
+#include "flash_module.h"
 #include "gif_module.h"
 #include "effects_module.h"
-#include "animation_module.h"
+#include "motion_module.h"
+#include "system_module.h"
+#include "wifi_module.h"
+#include "serial_module.h" 
 
 //==============================================================================
 // GLOBAL VARIABLES
@@ -37,8 +39,9 @@ static bool systemInitialized = false;
  */
 void onMenuEffectChanged(EffectType newEffect) {
   ESP_LOGI("BYTE-90", "Menu: Effect changed to %s", menu_getEffectName(newEffect).c_str());
+  
   // Effect is already applied by menu_module through menu_applyEffect()
-  // Additional custom logic can be added here if needed for confirmation or logging
+  // Additional custom logic can be added here if needed
 }
 
 /**
@@ -89,8 +92,7 @@ void showSystemStartUp();
 // INITIALIZATION FUNCTIONS
 //==============================================================================
 /**
- * @brief Display the appropriate crash static image based on device mode, Crash static images are used when the system fails to initialize properly.
- * This function checks the device mode and displays the corresponding static image.
+ * @brief Display the appropriate crash static image based on device mode
  */
 static void checkDeviceCrashModes() {
 // This code is determined at runtime
@@ -166,6 +168,7 @@ bool initializeSoftware() {
  */
 void showSystemStartUp() {
   displayDOSStartupAnimation();
+  // displayBootMessage("ALXV LABS");
   initializeAnimationModule();
   initializeEffectsModule();
   initializeEffectCycling();
@@ -203,6 +206,7 @@ void loop() {
   menu_update();
   // Mode-specific operations
   if (getCurrentMode() == SystemMode::UPDATE_MODE) {
+    updateSystem();
     handleWiFiManager();
     if (!menu_isActive()) {
       ADXLDataPolling();
@@ -210,9 +214,7 @@ void loop() {
   } else if (getCurrentMode() == SystemMode::ESP_MODE) {
     handleCommunication();
     if (!menu_isActive()) {
-      // This calls ADXLDataPolling() which calls menu_update()
-      // PlayEmotes handles polling because it has a blocking loop outside of the main loop()
-      playEmotes();
+      playEmotes(); // This calls ADXLDataPolling() which calls menu_update()
     }
   }
 }

@@ -15,7 +15,7 @@
 //==============================================================================
 // GLOBAL VARIABLES
 //==============================================================================
-/** @brief Wifi AP Credentials, NOTE: Windows 11 has issues assigning IP to DHCP clients */
+/** @brief Wifi AP Credentials */
 const char *WIFI_AP_SSID = "BYTE90_Setup";
 const char *WIFI_AP_PASSWORD = "00000000";
 /** @brief Web server instance for configuration portal */
@@ -395,6 +395,7 @@ void startWiFiConfigPortal() {
   bool apEnabled = (WiFi.getMode() == WIFI_MODE_AP && WiFi.softAPIP() != IPAddress(0, 0, 0, 0));
   
   if (!apEnabled) {
+ 
     WiFi.mode(WIFI_MODE_AP);
     delay(1000);
     // Configure AP with explicit DHCP range
@@ -458,8 +459,10 @@ void handleWiFiManager() {
   if (millis() - lastClientCheck > 30000) {
     int connectedClients = WiFi.softAPgetStationNum();
     IPAddress apIP = WiFi.softAPIP();
-    ESP_LOGI(WIFI_LOG, "AP IP: %s, Connected clients: %d",
-             apIP.toString().c_str(), connectedClients);
+
+    // ESP_LOGI(WIFI_LOG, "AP IP: %s, Connected clients: %d",
+    //          apIP.toString().c_str(), connectedClients);
+
     lastClientCheck = millis();
   }
 }
@@ -526,8 +529,6 @@ bool prepareForESPMode() {
  */
 bool prepareForUpdateMode() {
   ESP_LOGI(WIFI_LOG, "Preparing WiFi for Update mode");
-  
-  // This delegates to existing function but provides cleaner API
   return initWiFiManager();
 }
 
