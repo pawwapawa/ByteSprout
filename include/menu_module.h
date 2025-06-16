@@ -45,7 +45,7 @@ static const char* MENU_LOG = "::MENU_MODULE::";
 // Pin and Timing Definitions
 //------------------------------------------------------------------------------
 /** @brief Button input pin (A3 on Seeedstudio XIAO board) */
-#define MENU_BUTTON_PIN A3
+#define MENU_BUTTON_PIN A2
 /** @brief Time threshold in milliseconds to detect a long press */
 #define MENU_LONG_PRESS_TIME 3000
 /** @brief Maximum time in milliseconds between clicks to detect a double click */
