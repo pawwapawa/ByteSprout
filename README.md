@@ -10,6 +10,26 @@ While the base software is open-source, **the animations, original designs, and 
 
 > **⚠️ Important**: Before contributing, forking, and or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
 
+## Official Firmware vs. Open Source Development
+
+**⚠️ Important Notice for BYTE-90 Owners**:
+If you purchased a BYTE-90 device, use only official firmware updates available through the ALXV Labs website. These updates will be tested, and validated with official BYTE-90 devices.
+
+**This GitHub repository provides the open-source firmware foundation for**:
+
+- Custom development and modifications
+- Building your own DIY BYTE-90 hardware
+- Learning and educational purposes
+- Community contributions and improvements
+
+**⚠️ Warning**: Compiling and uploading firmware directly from this repository to a purchased BYTE-90 device may cause:
+
+- Loss of proprietary animations and visual effects
+- Incompatibility with your specific hardware revision
+- Potential device malfunction or boot issues
+
+**Use the official OTA update process for purchased devices, or proceed with custom firmware only if you understand the risks and have development experience.**
+
 ## Features
 
 - **Interactive Animations**: Displays various animated GIFs through interactions and sequence events
