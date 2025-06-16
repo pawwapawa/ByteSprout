@@ -20,8 +20,11 @@
  // CONSTANTS & DEFINITIONS
  //==============================================================================
  
- /** @brief Current firmware version number */
- #define FIRMWARE_VERSION 1
+ /** @brief Current firmware version number from build flags */
+ #ifndef FIRMWARE_VERSION
+ #define FIRMWARE_VERSION "1.0.0"  // Fallback if not defined in build flags
+ #endif
+
  /** @brief Filename for firmware updates */
  #define FIRMWARE_BIN "byte90.bin"
  /** @brief Filename for filesystem updates */
