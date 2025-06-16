@@ -10,10 +10,7 @@ While the base software is open-source, **the animations, original designs, and 
 
 > **⚠️ Important**: Before contributing, forking, and or using this project commercially, please read our [Legal & Contributing Guidelines](CONTRIBUTING.md).
 
-## Official Firmware vs. Open Source Development
-
-**⚠️ Important Notice for BYTE-90 Owners**:
-If you purchased a BYTE-90 device, use only official firmware updates available through the ALXV Labs website. These updates will be tested, and validated with official BYTE-90 devices.
+## Open Source Development
 
 **This GitHub repository provides the open-source firmware foundation for**:
 
@@ -22,13 +19,13 @@ If you purchased a BYTE-90 device, use only official firmware updates available 
 - Learning and educational purposes
 - Community contributions and improvements
 
-**⚠️ Warning**: Compiling and uploading firmware directly from this repository to a purchased BYTE-90 device may cause:
+**⚠️ Warning**: Compiling custom modifications to a purchased BYTE-90 device may cause:
 
 - Loss of proprietary animations and visual effects
 - Incompatibility with your specific hardware revision
 - Potential device malfunction or boot issues
 
-**Use the official OTA update process for purchased devices, or proceed with custom firmware only if you understand the risks and have development experience.**
+**Use the pre-built firmware releases for purchased devices, or proceed with custom firmware only if you understand the risks and have development experience.**
 
 ## Features
 
@@ -38,7 +35,7 @@ If you purchased a BYTE-90 device, use only official firmware updates available 
 - **Device-to-Device Communication**: Seamless pairing with other BYTE-90 devices via ESP-NOW protocol for animated conversations
 - **Intelligent Power Management**: Progressive sleep modes with automatic inactivity detection to maximize battery life
 - **Over-the-Air Updates**: Wireless firmware and animation updates via dedicated web interface
-- **Web Serial API Updater**: Connect your BYTE-90 and update firmware and animations using Web Serial API on supported browsers
+- **Web Serial API Updater**: Connect your BYTE-90 and update firmware and animations using Web Serial API on supported browsers at [https://install.alxv.dev/](https://install.alxv.dev/)
 
 ### Current Firmware Version
 - Version: 1.0.3
@@ -46,8 +43,6 @@ If you purchased a BYTE-90 device, use only official firmware updates available 
 - Compatibility: XIAO ESP32S3 hardware (Other ESP requires modification to pins)
 
 ## Hardware Components
-
-### Core Components
 
 **Microcontroller**: [Seeedstudio XIAO ESP32S3](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
 - Dual-core Xtensa LX7 processor (240MHz)
@@ -77,11 +72,6 @@ If you purchased a BYTE-90 device, use only official firmware updates available 
 - Software debouncing (50ms) with 300ms double-click window
 - Mode switching and interaction control
 
-**Storage**: 8MB Internal Flash Memory
-- Custom partition layout for firmware and animations
-- LittleFS filesystem for efficient file management
-- Supports 2-3MB of animation data
-
 **Power System**: 
 - USB-C charging and data interface (1-2 hours for full charge)
 - Integrated battery management with visual charge indicators:
@@ -91,33 +81,27 @@ If you purchased a BYTE-90 device, use only official firmware updates available 
 - Battery life: Up to 2 days with intelligent power management
 - Can operate via USB-C power without battery
 
-## Battery Safety & Device Usage
+**Storage**: 8MB Internal Flash Memory
+- Custom partition layout for firmware and animations
+- LittleFS filesystem for efficient file management
+- Supports 2-3MB of animation data
 
-### Battery Safety:
+## Safety & Device Usage
 
+### Battery Safety
 - Use ONLY the specified 3.7V lithium battery (103040 size) with PH 2.0 connector
 - Verify 3.7V voltage (NOT 3.9V) before installation
-- Check connector polarity alignment carefully
+- **Check connector polarity alignment carefully**
 - Handle battery connector with care to avoid damage
 
 ### Environmental Safety
-
 **BYTE-90 is designed as a desktop device for indoor use only.**
 - ⚠️ Do NOT use in vehicles or automotive environments - Heat, temperature fluctuations, and vibrations in cars can cause device overheating, battery damage, or malfunction.
 - ⚠️ Avoid high-temperature environments - Operating temperature should remain below 35°C (95°F) to prevent overheating.
 - ⚠️ Keep away from direct sunlight - Prolonged sun exposure can cause overheating and display damage.
 
-### Critical Safety Checks:
-
-1. Check battery's connector polarity alignment if using another type of battery
-2. Ensure battery is charged and functional
-3. Handle connector carefully
-4. Use only in appropriate indoor environments
-
-**Critical Safety Note**:
-Always verify battery voltage is 3.7V (not 3.9V) and **correct polarity alignment** BEFORE installation.
-
 ## Pin Configuration
+
 - [WaveShare Display Pinout](https://www.waveshare.com/img/devkit/LCD/1.5inch-RGB-OLED-Module/1.5inch-RGB-OLED-Module-details-3.jpg)
 - [XIAO ESP32S3 Pinout](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/2.jpg)
 
@@ -237,14 +221,13 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 - **Gravity compensation**: Removes static 9.8 m/s² component
 - **Triggers**: Startle animations, surprise reactions
 
-### BYTE-90 Device Pairing (Communication Mode) 
+### Device Pairing (ESP-NOW Communication)
 
-**Uses ESP-NOW Protocol for BYTE-90 Device Pairing:**
-- **Activation**: Toggles via Settings Menu
 - **Range**: Up to 200 meters in open space
 - **Latency**: <50ms for animation triggers
-- **Auto-discovery**: Automatic pairing with nearby a BYTE-90 device (max 2 connections)
+- **Auto-discovery**: Automatic pairing with nearby BYTE-90 devices (max 2 connections)
 - **Conversations**: Paired devices engage in animated sequences
+- **Activation**: Toggles via Settings Menu
 
 ## User Interface & Controls
 
@@ -254,10 +237,8 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 - **Long Press (3+ seconds)**: Enter deep sleep
 
 ### Motion Interactions
-- **Single Tap**: 
-  - X/Y-axis: Acknowledgment animations
-- **Double Tap**: 
-  - X/Y-axis: Shocked/surprised animations
+- **Single Tap**: X/Y-axis acknowledgment animations
+- **Double Tap**: X/Y-axis shocked/surprised animations  
 - **Shake**: Dizzy/confused animations
 - **Tilt**: Crash and recovery animations based on angle
 - **Sudden Movement**: Startle/surprise reactions
@@ -274,9 +255,9 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 
 **⚠️ Windows 11 compatibility**: Windows 11 has a compatibility issue with DHCP access points, it fails or takes a long time to assign IP preventing connection to the Web Interface. A workaround is to manually assign the IP address once connected or use an iOS or Android device.
 
-### Over-the-Air Updates
-- **Firmware updates**: Upload `.bin` files via web interface
-- **Animation packages**: Upload animation `.bin` files
+### Update Methods
+- **Over-the-Air**: Upload `.bin` files via web interface
+- **Web Serial API**: Direct USB connection at [https://install.alxv.dev/](https://install.alxv.dev/)
 - **Automatic validation**: File integrity and format verification
 - **Rollback protection**: Safe update process with error recovery
 
@@ -286,7 +267,7 @@ The BYTE-90 uses sophisticated motion detection with hardware-based tap detectio
 
 - **⚠️ If animations are accidentally erased**: Contact ALXV Labs support with your purchase information including order number for assistance in restoring your animations.
 
-- **For DIY builders**: This open source firmware does not include animations. Animations are available only with purchased BYTE-90 devices.
+- **For DIY builders**: This open source firmware **does not include animations**. Animations are available **ONLY with purchased BYTE-90 devices**.
 
 ## Development & Building
 
@@ -304,8 +285,7 @@ lib_deps =
     adafruit/Adafruit SSD1351 library@^1.3.2       # Display driver
     adafruit/Adafruit ADXL345@^1.3.4               # Accelerometer
 ```
-**⚠️ Important note**: Latest version of AnimatedGIF V2.2.0 introduces breaking changes and creates GIF artifacts on display.
-I have not updated to this version and don't see a reason too until I explore the breaking changes.
+**⚠️ Important note**: Latest version of AnimatedGIF V2.2.0 introduces breaking changes and creates GIF artifacts on display. I have not updated to this version and don't see a reason too until I explore the breaking changes.
 
 ### Build Configuration
 ```ini
@@ -316,6 +296,7 @@ framework = arduino
 monitor_speed = 115200
 build_flags = 
 	-DCORE_DEBUG_LEVEL=5
+  -DFIRMWARE_VERSION=\"1.0.X\"
 board_build.filesystem = littlefs
 board_build.partitions = custom_partitions.csv
 lib_deps = 
@@ -330,8 +311,6 @@ lib_deps =
 - **Frame rate**: 16 FPS recommended
 - **Color depth**: 8-bit indexed color (256 colors max)
 - **Format**: Optimized GIF with LZW compression [Use EZgif.com](https://ezgif.com/)
-
-## Device Modes
 
 ### Personality Modes
 Configure different retro computing aesthetics to call mode based animations:
@@ -354,9 +333,9 @@ Configure different retro computing aesthetics to call mode based animations:
 - **Solution**: Charge immediately for 1-2 hours
 - **Hardware Reset**: Press reset button on board
 
-**No display (Black Screen)**
-- **Cause** Empty battery for extended periods requires a hard reset via the Reset button on the Xiao ESP32-S3 board
-- **For DIYer** Make sure you have your wiring correct and using the supported display, other aftermarket displays will require custom PIN configurations.
+**No Display (Black Screen)**
+- **Cause**: Empty battery for extended periods requires a hard reset via the Reset button on the Xiao ESP32-S3 board
+- **For DIYers**: Make sure you have your wiring correct and using the supported display, other aftermarket displays will require custom PIN configurations.
 
 **Update Mode Issues**
 - **Windows 11**: Known compatibility issue with ESP32 access points
@@ -396,13 +375,11 @@ Yes, under GPL v3.0 terms, but you **cannot use BYTE-90 branding or any BYTE-90 
 ## Support & Community
 
 ### What We Support
-
 - **Core firmware** functionality and documented bugs
 - Hardware compatibility issues with **OFFICIAL BYTE-90 hardware**
 - Basic troubleshooting for common issues
 
 ### What We Don't Support
-
 - Custom animation development
 - Hardware modifications or alternative component integration
 - Third-party component compatibility
@@ -465,4 +442,4 @@ For bug reports, feature requests, and detailed contribution guidelines, see [Le
 
 *Designed and developed by Alex Vong, ALXV LABS. This project represents the intersection of retro computing nostalgia and modern interactive design, creating a unique interactive designer toy experience for makers and collectors alike.*
 
-**Version**: 1.0.1 | **Last Updated**: June 7, 2025 | **License**: GPL v3.0 | **Legal**: [CONTRIBUTING.md](CONTRIBUTING.md)
+**Version**: 1.0.1 | **Last Updated**: June 16, 2025 | **License**: GPL v3.0 | **Legal**: [CONTRIBUTING.md](CONTRIBUTING.md)
