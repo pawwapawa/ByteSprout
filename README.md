@@ -66,6 +66,12 @@ Feel free to clone, remix, and contribute—just don’t claim it’s an officia
 
 ---
 
+⚠️ **Note:** This repo is intended as a personal open-source reference.  
+I’m not accepting pull requests or external contributions at this time.  
+If you’d like to customize it, please feel free to fork!
+
+---
+
 ## 🪴 Growing this sprout?
 
 If you build your own, I’d love to see it!  
